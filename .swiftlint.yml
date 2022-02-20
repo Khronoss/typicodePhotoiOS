@@ -1,0 +1,8 @@
+# Files to exclude
+# Include only files that we create
+excluded:
+    - Pods
+
+# Use indented switch cases (personal preference)
+switch_case_alignment:
+        indented_cases: true

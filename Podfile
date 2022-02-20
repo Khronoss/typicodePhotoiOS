@@ -6,6 +6,7 @@ target 'JSONPhotos' do
   use_frameworks!
 
   # Pods for JSONPhotos
+  pod 'SwiftLint', '~> 0.46.2'
 
   target 'JSONPhotosTests' do
     inherit! :search_paths
