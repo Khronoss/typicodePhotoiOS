@@ -11,9 +11,7 @@
 		39FBEB3725B82877CB9B5672 /* Pods_JSONPhotosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6F60BBC8A799B61EB95C10 /* Pods_JSONPhotosTests.framework */; };
 		6D7DA181F06B47125108D50B /* Pods_JSONPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CFF1B6E7CBEA00ECAA52F2 /* Pods_JSONPhotos.framework */; };
 		A1F9B80227C2E6EF00F2049D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9B80127C2E6EF00F2049D /* AppDelegate.swift */; };
-		A1F9B80427C2E6EF00F2049D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9B80327C2E6EF00F2049D /* SceneDelegate.swift */; };
 		A1F9B80627C2E6EF00F2049D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9B80527C2E6EF00F2049D /* ViewController.swift */; };
-		A1F9B80927C2E6EF00F2049D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F9B80727C2E6EF00F2049D /* Main.storyboard */; };
 		A1F9B80B27C2E6F200F2049D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F9B80A27C2E6F200F2049D /* Assets.xcassets */; };
 		A1F9B80E27C2E6F200F2049D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F9B80C27C2E6F200F2049D /* LaunchScreen.storyboard */; };
 		A1F9B81927C2E6F200F2049D /* JSONPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9B81827C2E6F200F2049D /* JSONPhotosTests.swift */; };
@@ -48,9 +46,7 @@
 		7FE275BB63E52A7A9E83A346 /* Pods_JSONPhotos_JSONPhotosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSONPhotos_JSONPhotosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F9B7FE27C2E6EF00F2049D /* JSONPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F9B80127C2E6EF00F2049D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1F9B80327C2E6EF00F2049D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A1F9B80527C2E6EF00F2049D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A1F9B80827C2E6EF00F2049D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1F9B80A27C2E6F200F2049D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1F9B80D27C2E6F200F2049D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F9B80F27C2E6F200F2049D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +87,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A16EC65C27C2EDD900EE7022 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A16EC65E27C2EE5300EE7022 /* App */,
+				A16EC65F27C2EE6C00EE7022 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A16EC65D27C2EDE000EE7022 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9B80A27C2E6F200F2049D /* Assets.xcassets */,
+				A1F9B80C27C2E6F200F2049D /* LaunchScreen.storyboard */,
+				A1F9B80F27C2E6F200F2049D /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A16EC65E27C2EE5300EE7022 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9B80127C2E6EF00F2049D /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A16EC65F27C2EE6C00EE7022 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A1F9B80527C2E6EF00F2049D /* ViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		A1F9B7F527C2E6EF00F2049D = {
 			isa = PBXGroup;
 			children = (
@@ -116,13 +147,8 @@
 		A1F9B80027C2E6EF00F2049D /* JSONPhotos */ = {
 			isa = PBXGroup;
 			children = (
-				A1F9B80127C2E6EF00F2049D /* AppDelegate.swift */,
-				A1F9B80327C2E6EF00F2049D /* SceneDelegate.swift */,
-				A1F9B80527C2E6EF00F2049D /* ViewController.swift */,
-				A1F9B80727C2E6EF00F2049D /* Main.storyboard */,
-				A1F9B80A27C2E6F200F2049D /* Assets.xcassets */,
-				A1F9B80C27C2E6F200F2049D /* LaunchScreen.storyboard */,
-				A1F9B80F27C2E6F200F2049D /* Info.plist */,
+				A16EC65D27C2EDE000EE7022 /* Resources */,
+				A16EC65C27C2EDD900EE7022 /* Sources */,
 			);
 			path = JSONPhotos;
 			sourceTree = "<group>";
@@ -277,7 +303,6 @@
 			files = (
 				A1F9B80E27C2E6F200F2049D /* LaunchScreen.storyboard in Resources */,
 				A1F9B80B27C2E6F200F2049D /* Assets.xcassets in Resources */,
-				A1F9B80927C2E6EF00F2049D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +416,6 @@
 			files = (
 				A1F9B80627C2E6EF00F2049D /* ViewController.swift in Sources */,
 				A1F9B80227C2E6EF00F2049D /* AppDelegate.swift in Sources */,
-				A1F9B80427C2E6EF00F2049D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,14 +452,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A1F9B80727C2E6EF00F2049D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A1F9B80827C2E6EF00F2049D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A1F9B80C27C2E6F200F2049D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -498,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -553,7 +569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -573,12 +589,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5B3WD9XJ9K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JSONPhotos/Info.plist;
+				INFOPLIST_FILE = JSONPhotos/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,12 +618,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5B3WD9XJ9K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JSONPhotos/Info.plist;
+				INFOPLIST_FILE = JSONPhotos/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
