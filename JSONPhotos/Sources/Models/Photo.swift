@@ -12,3 +12,14 @@ struct Photo {
     let thumbnail: URL
     let url: URL
 }
+
+extension Photo: Equatable {
+    static func == (
+        lhs: Self,
+        rhs: Self
+    ) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.thumbnail == rhs.thumbnail &&
+        lhs.url == rhs.url
+    }
+}
