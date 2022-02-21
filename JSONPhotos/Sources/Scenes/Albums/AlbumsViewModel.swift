@@ -8,19 +8,25 @@
 import Foundation
 
 protocol AlbumsViewModelType {
-
+    func viewLoaded()
 }
 
 class AlbumsViewModel {
     let coordinator: AlbumsCoordinatorType
+    let dataService: AlbumsDataServiceType
 
     init(
-        coordinator: AlbumsCoordinatorType
+        coordinator: AlbumsCoordinatorType,
+        dataService: AlbumsDataServiceType
     ) {
         self.coordinator = coordinator
+        self.dataService = dataService
     }
 }
 
 extension AlbumsViewModel: AlbumsViewModelType {
-
+    func viewLoaded() {
+        dataService
+            .fetchAlbums()
+    }
 }

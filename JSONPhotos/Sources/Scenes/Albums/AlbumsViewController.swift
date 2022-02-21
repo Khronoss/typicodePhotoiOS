@@ -27,6 +27,7 @@ class AlbumsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .lightGray
-    }
 
+        viewModel.viewLoaded()
+    }
 }

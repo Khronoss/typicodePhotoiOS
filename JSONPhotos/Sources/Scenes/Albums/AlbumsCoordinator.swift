@@ -22,8 +22,11 @@ class AlbumsCoordinator {
     }
 
     func start() {
-        let viewModel = AlbumsViewModel(coordinator: self)
-        let controller = AlbumsViewController(viewModel: viewModel)
+        let viewModel = AlbumsViewModel(
+            coordinator: self,
+            dataService: AlbumsDataService())
+        let controller = AlbumsViewController(
+            viewModel: viewModel)
 
         window.rootViewController = controller
     }
