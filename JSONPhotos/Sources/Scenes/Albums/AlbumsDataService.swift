@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol AlbumsDataServiceType {
-    func fetchAlbums()
+    func fetchAlbums() -> Observable<[Album]>
 }
 
 class AlbumsDataService {
@@ -16,5 +17,9 @@ class AlbumsDataService {
 }
 
 extension AlbumsDataService: AlbumsDataServiceType {
-    func fetchAlbums() { }
+    func fetchAlbums() -> Observable<[Album]> {
+        Observable
+            .just([Album]())
+            .asObservable()
+    }
 }

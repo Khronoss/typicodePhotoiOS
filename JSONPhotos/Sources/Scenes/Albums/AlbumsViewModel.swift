@@ -9,8 +9,9 @@ import Foundation
 import RxSwift
 import RxRelay
 
-enum AlbumsViewState {
+enum AlbumsViewState: Equatable {
     case loading
+    case albums([Album])
 }
 
 protocol AlbumsViewModelType {
@@ -21,6 +22,8 @@ protocol AlbumsViewModelType {
 
 class AlbumsViewModel {
     let state = BehaviorRelay<AlbumsViewState>(value: .loading)
+
+    private let disposeBag = DisposeBag()
 
     let coordinator: AlbumsCoordinatorType
     let dataService: AlbumsDataServiceType
@@ -38,5 +41,8 @@ extension AlbumsViewModel: AlbumsViewModelType {
     func viewLoaded() {
         dataService
             .fetchAlbums()
+            .map(AlbumsViewState.albums)
+            .bind(to: state)
+            .disposed(by: disposeBag)
     }
 }

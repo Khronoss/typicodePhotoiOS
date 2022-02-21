@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 @testable import JSONPhotos
 
 class AlbumsDataServiceMock {
@@ -20,7 +21,11 @@ class AlbumsDataServiceMock {
 }
 
 extension AlbumsDataServiceMock: AlbumsDataServiceType {
-    func fetchAlbums() {
+    func fetchAlbums() -> Observable<[Album]> {
         loadCallCount += 1
+
+        return Observable
+            .just(albumsToFetch)
+            .asObservable()
     }
 }
