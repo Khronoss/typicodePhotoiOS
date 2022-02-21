@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static func createWindow() -> UIWindow {
         let window = UIWindow()
+        let rootCoordinator = AlbumsCoordinator(from: window)
 
-        window.rootViewController = ViewController()
+        rootCoordinator.start()
 
         return window
     }
