@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import RxTest
 @testable import JSONPhotos
 
 class AlbumsViewModelTests: XCTestCase {
@@ -20,4 +21,26 @@ class AlbumsViewModelTests: XCTestCase {
 
         XCTAssertEqual(dataService.loadCallCount, 1)
     }
+
+    func testOnNoOpItShouldBeInLoadingState() {
+        let dataService = AlbumsDataServiceMock()
+        let viewModel = AlbumsViewModel(
+            coordinator: AlbumsCoordinatorMock(),
+            dataService: dataService)
+
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let res = scheduler.start {
+            viewModel
+                .state
+                .asObservable()
+        }
+
+        XCTAssertRecordedElements(
+            res.events,
+            [
+                .loading
+            ])
+    }
+
 }

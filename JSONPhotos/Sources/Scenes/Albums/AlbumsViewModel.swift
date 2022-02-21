@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
+
+enum AlbumsViewState {
+    case loading
+}
 
 protocol AlbumsViewModelType {
     func viewLoaded()
+
+    var state: BehaviorRelay<AlbumsViewState> { get }
 }
 
 class AlbumsViewModel {
+    let state = BehaviorRelay<AlbumsViewState>(value: .loading)
+
     let coordinator: AlbumsCoordinatorType
     let dataService: AlbumsDataServiceType
 

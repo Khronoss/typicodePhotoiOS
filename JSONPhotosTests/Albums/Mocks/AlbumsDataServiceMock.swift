@@ -10,6 +10,13 @@ import Foundation
 
 class AlbumsDataServiceMock {
     private(set) var loadCallCount = 0
+    let albumsToFetch: [Album]
+
+    init(
+        albums: [Album] = []
+    ) {
+        self.albumsToFetch = albums
+    }
 }
 
 extension AlbumsDataServiceMock: AlbumsDataServiceType {
