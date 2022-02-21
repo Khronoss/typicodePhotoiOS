@@ -247,6 +247,7 @@
 				A1F9B7FA27C2E6EF00F2049D /* Sources */,
 				A1F9B7FB27C2E6EF00F2049D /* Frameworks */,
 				A1F9B7FC27C2E6EF00F2049D /* Resources */,
+				1390D8123087AEE67D838E91 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,6 +266,7 @@
 				A1F9B81027C2E6F200F2049D /* Sources */,
 				A1F9B81127C2E6F200F2049D /* Frameworks */,
 				A1F9B81227C2E6F200F2049D /* Resources */,
+				66E3D193C3DC51B144CA072A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -284,6 +286,7 @@
 				A1F9B81A27C2E6F200F2049D /* Sources */,
 				A1F9B81B27C2E6F200F2049D /* Frameworks */,
 				A1F9B81C27C2E6F200F2049D /* Resources */,
+				DDD889D2795126FB158E1B6D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +369,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1390D8123087AEE67D838E91 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos/Pods-JSONPhotos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos/Pods-JSONPhotos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos/Pods-JSONPhotos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		46052E861B1F73BA57D2FCB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,6 +430,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		66E3D193C3DC51B144CA072A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotosTests/Pods-JSONPhotosTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotosTests/Pods-JSONPhotosTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSONPhotosTests/Pods-JSONPhotosTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		870F0C4036E415DEE0D7F395 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,6 +486,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "swiftlint=\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\nif which ${swiftlint} >/dev/null; then    \n    ${swiftlint} --fix --config \"${SRCROOT}/.swiftlint.yml\"\n    ${swiftlint} --config \"${SRCROOT}/.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		DDD889D2795126FB158E1B6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos-JSONPhotosUITests/Pods-JSONPhotos-JSONPhotosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos-JSONPhotosUITests/Pods-JSONPhotos-JSONPhotosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSONPhotos-JSONPhotosUITests/Pods-JSONPhotos-JSONPhotosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -731,7 +785,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B668D746BE8D22182CBA53C /* Pods-JSONPhotos-JSONPhotosUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5B3WD9XJ9K;
@@ -750,7 +803,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 210C5DF6D12132E91F32993C /* Pods-JSONPhotos-JSONPhotosUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5B3WD9XJ9K;

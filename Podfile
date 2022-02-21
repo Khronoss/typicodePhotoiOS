@@ -11,9 +11,18 @@ target 'JSONPhotos' do
   # Pods for JSONPhotos
   pod 'SwiftLint', '~> 0.46.2'
 
+  # ReactiveX
+  pod 'RxSwift', '~> 6.5.0'
+  pod 'RxCocoa'
+
   target 'JSONPhotosTests' do
     inherit! :search_paths
     # Pods for testing
+
+    # ReactiveX
+    pod 'RxTest'
+    pod 'RxBlocking'
+    
   end
 
   target 'JSONPhotosUITests' do
