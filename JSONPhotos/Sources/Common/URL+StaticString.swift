@@ -12,7 +12,7 @@ extension URL {
         staticString: StaticString
     ) {
         guard let url = URL(string: "\(staticString)") else {
-            preconditionFailure("Invalid static URL string: \(staticString)")
+            preconditionFailure("[URL]: Invalid static URL string: \(staticString)")
         }
 
         self = url

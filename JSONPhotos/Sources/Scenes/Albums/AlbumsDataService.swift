@@ -13,7 +13,13 @@ protocol AlbumsDataServiceType {
 }
 
 class AlbumsDataService {
+    let session: APISessionManagerType
 
+    init(
+        session: APISessionManagerType
+    ) {
+        self.session = session
+    }
 }
 
 extension AlbumsDataService: AlbumsDataServiceType {
