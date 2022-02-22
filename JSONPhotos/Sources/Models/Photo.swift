@@ -25,3 +25,14 @@ extension Photo: Equatable {
         lhs.url == rhs.url
     }
 }
+
+extension Photo {
+    init(
+        from apiModel: PhotoAPI
+    ) {
+        id = apiModel.id
+        title = apiModel.title
+        thumbnail = URL(string: apiModel.thumbnailUrl)!
+        url = URL(string: apiModel.url)!
+    }
+}
