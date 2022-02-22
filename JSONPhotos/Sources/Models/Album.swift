@@ -34,25 +34,23 @@ extension Album {
     static func listFrom(
         photos: [PhotoAPI]
     ) -> [Album] {
-        var albums: [Album] = []
+        let albums = photos
+            .reduce([Album]()) { albums, photo in
+                let album = albums
+                    .first(
+                        where: { $0.id == photo.albumId })
+                ?? Album(
+                    id: photo.albumId,
+                    photos: [])
 
-        for photo in photos {
-            if let album = albums.first(where: { $0.id == photo.albumId }) {
                 let newAlbum = album
                     .append(
                         Photo(from: photo))
 
-                albums.removeAll(where: { $0.id == photo.albumId })
-                albums.append(newAlbum)
-            } else {
-                let album = Album(
-                    id: photo.albumId,
-                    photos: [
-                        Photo(from: photo)
-                    ])
-                albums.append(album)
+                return albums
+                    .filter { $0.id != photo.albumId } + [newAlbum]
             }
-        }
+
         return albums
     }
 }

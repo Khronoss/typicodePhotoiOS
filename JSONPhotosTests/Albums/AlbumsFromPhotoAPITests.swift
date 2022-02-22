@@ -34,11 +34,7 @@ class AlbumsFromPhotoAPITests: XCTestCase {
                 Album(
                     id: 1,
                     photos: [
-                        Photo(
-                            id: 1,
-                            title: "PhotoAPI Title",
-                            thumbnail: URL(staticString: "https://www.fixture.com"),
-                            url: URL(staticString: "https://www.fixture.com"))
+                        Self.createControlPhoto(withId: 1)
                     ])
             ])
     }
@@ -55,13 +51,7 @@ class AlbumsFromPhotoAPITests: XCTestCase {
                 Album(
                     id: 1,
                     photos: (0..<5)
-                        .map {
-                            Photo(
-                                id: $0,
-                                title: "PhotoAPI Title",
-                                thumbnail: URL(staticString: "https://www.fixture.com"),
-                                url: URL(staticString: "https://www.fixture.com"))
-                        })
+                        .map(Self.createControlPhoto))
             ])
     }
 
@@ -78,11 +68,7 @@ class AlbumsFromPhotoAPITests: XCTestCase {
                     Album(
                         id: $0,
                         photos: [
-                            Photo(
-                                id: $0,
-                                title: "PhotoAPI Title",
-                                thumbnail: URL(staticString: "https://www.fixture.com"),
-                                url: URL(staticString: "https://www.fixture.com"))
+                            Self.createControlPhoto(withId: $0)
                         ])
                 })
     }
@@ -99,33 +85,25 @@ class AlbumsFromPhotoAPITests: XCTestCase {
                 Album(
                     id: 1,
                     photos: (0..<5)
-                        .map {
-                            Photo(
-                                id: $0,
-                                title: "PhotoAPI Title",
-                                thumbnail: URL(staticString: "https://www.fixture.com"),
-                                url: URL(staticString: "https://www.fixture.com"))
-                        }),
+                        .map(Self.createControlPhoto)),
                 Album(
                     id: 2,
                     photos: (5..<10)
-                        .map {
-                            Photo(
-                                id: $0,
-                                title: "PhotoAPI Title",
-                                thumbnail: URL(staticString: "https://www.fixture.com"),
-                                url: URL(staticString: "https://www.fixture.com"))
-                        }),
+                        .map(Self.createControlPhoto)),
                 Album(
                     id: 3,
                     photos: (10..<15)
-                        .map {
-                            Photo(
-                                id: $0,
-                                title: "PhotoAPI Title",
-                                thumbnail: URL(staticString: "https://www.fixture.com"),
-                                url: URL(staticString: "https://www.fixture.com"))
-                        })
+                        .map(Self.createControlPhoto))
             ])
+    }
+
+    static func createControlPhoto(
+        withId id: Int
+    ) -> Photo {
+        Photo(
+            id: id,
+            title: "PhotoAPI Title",
+            thumbnail: URL(staticString: "https://www.fixture.com"),
+            url: URL(staticString: "https://www.fixture.com"))
     }
 }
