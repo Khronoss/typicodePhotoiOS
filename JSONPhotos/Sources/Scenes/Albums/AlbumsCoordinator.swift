@@ -22,13 +22,20 @@ class AlbumsCoordinator {
     }
 
     func start() {
-        let viewModel = AlbumsViewModel(
-            coordinator: self,
-            dataService: AlbumsDataService())
+        let viewModel = createAlbumsViewModel()
         let controller = AlbumsViewController(
             viewModel: viewModel)
 
         window.rootViewController = controller
+    }
+
+    func createAlbumsViewModel() -> AlbumsViewModelType {
+        let dataService = AlbumsDataService(
+            session: URLSession.shared)
+
+        return AlbumsViewModel(
+            coordinator: self,
+            dataService: dataService)
     }
 }
 

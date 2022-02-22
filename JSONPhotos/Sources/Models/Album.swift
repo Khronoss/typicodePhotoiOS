@@ -21,3 +21,11 @@ extension Album: Equatable {
         lhs.photos == rhs.photos
     }
 }
+
+extension Album {
+    static func listFrom(
+        photos: [PhotoAPI]
+    ) -> [Album] {
+        []
+    }
+}
