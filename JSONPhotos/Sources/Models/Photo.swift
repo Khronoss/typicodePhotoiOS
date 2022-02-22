@@ -9,6 +9,7 @@ import Foundation
 
 struct Photo {
     let id: Int
+    let title: String
     let thumbnail: URL
     let url: URL
 }
@@ -19,6 +20,7 @@ extension Photo: Equatable {
         rhs: Self
     ) -> Bool {
         lhs.id == rhs.id &&
+        lhs.title == rhs.title &&
         lhs.thumbnail == rhs.thumbnail &&
         lhs.url == rhs.url
     }
