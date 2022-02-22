@@ -13,7 +13,7 @@ struct Album {
 }
 
 extension Album: Equatable {
-    static func ==(
+    static func == (
         lhs: Self,
         rhs: Self
     ) -> Bool {
