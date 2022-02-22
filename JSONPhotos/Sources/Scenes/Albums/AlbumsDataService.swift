@@ -24,8 +24,14 @@ class AlbumsDataService {
 
 extension AlbumsDataService: AlbumsDataServiceType {
     func fetchAlbums() -> Observable<[Album]> {
-        Observable
-            .just([Album]())
+        session
+            .getData(
+                from: URL(staticString: "http://jsonplaceholder.typicode.com/photos"))
+            .decode(
+                type: [PhotoAPI].self,
+                decoder: JSONDecoder())
+            .map(
+                Album.listFrom(photos:))
             .asObservable()
     }
 }

@@ -22,7 +22,9 @@
 		A1406FD327C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD227C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift */; };
 		A1406FD627C3C46A00535CA7 /* AlbumsDataServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD527C3C46A00535CA7 /* AlbumsDataServiceMock.swift */; };
 		A1406FD827C3C49200535CA7 /* AlbumsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD727C3C49200535CA7 /* AlbumsDataService.swift */; };
+		A1F3EC3A27C4CB460017E28F /* AlbumsDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3927C4CB460017E28F /* AlbumsDataServiceTests.swift */; };
 		A1F3EC3D27C4CD330017E28F /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3C27C4CD330017E28F /* URL+StaticString.swift */; };
+		A1F3EC4027C4D3240017E28F /* APISessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3F27C4D3240017E28F /* APISessionManagerMock.swift */; };
 		A1F3EC4227C4D35C0017E28F /* APISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC4127C4D35C0017E28F /* APISessionManager.swift */; };
 		A1F3EC4527C4D6E60017E28F /* album_dataService_tests_001.json in Resources */ = {isa = PBXBuildFile; fileRef = A1F3EC4427C4D6E60017E28F /* album_dataService_tests_001.json */; };
 		A1F3EC4927C4DAB10017E28F /* PhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC4827C4DAB10017E28F /* PhotoAPI.swift */; };
@@ -72,7 +74,9 @@
 		A1406FD227C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCoordinatorMock.swift; sourceTree = "<group>"; };
 		A1406FD527C3C46A00535CA7 /* AlbumsDataServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataServiceMock.swift; sourceTree = "<group>"; };
 		A1406FD727C3C49200535CA7 /* AlbumsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataService.swift; sourceTree = "<group>"; };
+		A1F3EC3927C4CB460017E28F /* AlbumsDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataServiceTests.swift; sourceTree = "<group>"; };
 		A1F3EC3C27C4CD330017E28F /* URL+StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+StaticString.swift"; sourceTree = "<group>"; };
+		A1F3EC3F27C4D3240017E28F /* APISessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISessionManagerMock.swift; sourceTree = "<group>"; };
 		A1F3EC4127C4D35C0017E28F /* APISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISessionManager.swift; sourceTree = "<group>"; };
 		A1F3EC4427C4D6E60017E28F /* album_dataService_tests_001.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = album_dataService_tests_001.json; sourceTree = "<group>"; };
 		A1F3EC4827C4DAB10017E28F /* PhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPI.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				A11E8AF627C42FD800855879 /* Fixtures */,
 				A1406FD427C3C3B400535CA7 /* Mocks */,
 				A1406FCF27C3C1BC00535CA7 /* AlbumsViewModelTests.swift */,
+				A1F3EC3927C4CB460017E28F /* AlbumsDataServiceTests.swift */,
 				A1F3EC4A27C4EA280017E28F /* AlbumsFromPhotoAPITests.swift */,
 			);
 			path = Albums;
@@ -213,6 +218,14 @@
 			isa = PBXGroup;
 			children = (
 				A1F3EC3C27C4CD330017E28F /* URL+StaticString.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A1F3EC3E27C4D2F60017E28F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A1F3EC3F27C4D3240017E28F /* APISessionManagerMock.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -276,6 +289,7 @@
 		A1F9B81727C2E6F200F2049D /* JSONPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1F3EC3E27C4D2F60017E28F /* Common */,
 				A1406FD127C3C38800535CA7 /* Albums */,
 			);
 			path = JSONPhotosTests;
@@ -613,6 +627,8 @@
 				A1406FD027C3C1BC00535CA7 /* AlbumsViewModelTests.swift in Sources */,
 				A11E8AFF27C432B000855879 /* Album+Fixture.swift in Sources */,
 				A1F3EC4D27C4EC840017E28F /* PhotoAPI+Fixture.swift in Sources */,
+				A1F3EC4027C4D3240017E28F /* APISessionManagerMock.swift in Sources */,
+				A1F3EC3A27C4CB460017E28F /* AlbumsDataServiceTests.swift in Sources */,
 				A1F3EC4B27C4EA280017E28F /* AlbumsFromPhotoAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
