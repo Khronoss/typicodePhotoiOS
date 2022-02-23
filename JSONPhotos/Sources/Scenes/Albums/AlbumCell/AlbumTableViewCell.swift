@@ -102,5 +102,11 @@ class AlbumTableViewCell: UITableViewCell {
             .photos
             .bind(to: adapter.photos)
             .disposed(by: disposeBag)
+
+        collectionView
+            .rx
+            .modelSelected(Photo.self)
+            .bind(to: viewModel.photoSelected)
+            .disposed(by: disposeBag)
     }
 }

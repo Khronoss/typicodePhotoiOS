@@ -31,6 +31,8 @@ struct Section: SectionModelType {
 protocol AlbumsTableViewAdapterType {
     var albums: BehaviorRelay<[Album]> { get }
 
+    var photoSelected: PublishRelay<Photo> { get }
+
     func bind(to tableView: UITableView)
 }
 
@@ -40,6 +42,8 @@ class AlbumsTableViewAdapter {
     private static let cellIdentifier = "AlbumCell"
 
     let albums = BehaviorRelay<[Album]>(value: [])
+
+    let photoSelected = PublishRelay<Photo>()
 
     private(set) var disposeBag = DisposeBag()
     private lazy var dataSource: DataSourceType = createDataSource()
@@ -58,7 +62,7 @@ class AlbumsTableViewAdapter {
 
     private func createDataSource() -> DataSourceType {
         DataSourceType(
-            configureCell: { _, tableView, indexPath, item in
+            configureCell: { [unowned self] _, tableView, indexPath, item in
                 guard
                     let cell = tableView
                         .dequeueReusableCell(
@@ -69,7 +73,14 @@ class AlbumsTableViewAdapter {
                     return UITableViewCell()
                 }
 
-                cell.viewModel = AlbumCellViewModel(photos: item)
+                let viewModel = AlbumCellViewModel(photos: item)
+
+                viewModel
+                    .photoSelected
+                    .bind(to: self.photoSelected)
+                    .disposed(by: disposeBag)
+
+                cell.viewModel = viewModel
 
                 return cell
             },

@@ -50,5 +50,14 @@ class AlbumsViewController: UIViewController {
             .compactMap(\.albums)
             .bind(to: tableViewAdapter.albums)
             .disposed(by: disposeBag)
+
+        tableViewAdapter
+            .photoSelected
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] photo in
+                self?.viewModel
+                    .didSelect(photo)
+            })
+            .disposed(by: disposeBag)
     }
 }

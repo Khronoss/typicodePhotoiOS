@@ -25,6 +25,7 @@ extension AlbumsViewState {
 
 protocol AlbumsViewModelType {
     func viewLoaded()
+    func didSelect(_ photo: Photo)
 
     var state: BehaviorRelay<AlbumsViewState> { get }
 }
@@ -53,5 +54,12 @@ extension AlbumsViewModel: AlbumsViewModelType {
             .map(AlbumsViewState.albums)
             .bind(to: state)
             .disposed(by: disposeBag)
+    }
+
+    func didSelect(
+        _ photo: Photo
+    ) {
+        // Display single photo
+        print("Selected \(photo)")
     }
 }
