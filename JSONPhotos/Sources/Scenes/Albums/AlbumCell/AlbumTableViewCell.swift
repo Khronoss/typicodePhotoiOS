@@ -9,8 +9,6 @@ import UIKit
 import RxSwift
 
 class AlbumTableViewCell: UITableViewCell {
-    static let cellIdentifier = "PhotoCell"
-
     weak var collectionView: UICollectionView!
 
     var viewModel: AlbumCellViewModelType? {
@@ -20,6 +18,8 @@ class AlbumTableViewCell: UITableViewCell {
             }
         }
     }
+
+    let adapter = AlbumCollectionViewDatapter()
 
     private var disposeBag = DisposeBag()
 
@@ -53,28 +53,31 @@ class AlbumTableViewCell: UITableViewCell {
         encapsulate(collectionView)
 
         self.collectionView = collectionView
+
+        adapter.bind(to: collectionView)
     }
 
     private func createCollectionView() -> UICollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(
-            width: Constants.GUI.photoCellSize,
-            height: Constants.GUI.photoCellSize)
-        layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
-        layout.scrollDirection = .horizontal
-
         let collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: layout)
-
-        collectionView.register(
-            UICollectionViewCell.self,
-            forCellWithReuseIdentifier: Self.cellIdentifier)
+            collectionViewLayout: collectionViewLayout())
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
         return collectionView
+    }
+
+    private func collectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+
+        layout.itemSize = CGSize(
+            width: Constants.GUI.photoCellSize,
+            height: Constants.GUI.photoCellSize)
+        layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
+        layout.scrollDirection = .horizontal
+
+        return layout
     }
 
     private func encapsulate(
@@ -97,13 +100,7 @@ class AlbumTableViewCell: UITableViewCell {
     ) {
         viewModel
             .photos
-            .asDriver(onErrorJustReturn: [])
-            .drive(
-                collectionView.rx.items(
-                    cellIdentifier: Self.cellIdentifier,
-                    cellType: UICollectionViewCell.self)) { (_, _, cell) in
-                        cell.backgroundColor = .red
-                    }
-                    .disposed(by: disposeBag)
+            .bind(to: adapter.photos)
+            .disposed(by: disposeBag)
     }
 }

@@ -22,6 +22,7 @@
 		A1406FD327C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD227C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift */; };
 		A1406FD627C3C46A00535CA7 /* AlbumsDataServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD527C3C46A00535CA7 /* AlbumsDataServiceMock.swift */; };
 		A1406FD827C3C49200535CA7 /* AlbumsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1406FD727C3C49200535CA7 /* AlbumsDataService.swift */; };
+		A16EE2C927C6421C000B674D /* AlbumCollectionViewDatapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16EE2C827C6421C000B674D /* AlbumCollectionViewDatapter.swift */; };
 		A1E76C3A27C61625000CFA36 /* AlbumsTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */; };
 		A1E76C3F27C61D1A000CFA36 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */; };
 		A1E76C4127C6219C000CFA36 /* Constants+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C4027C6219C000CFA36 /* Constants+UI.swift */; };
@@ -78,6 +79,7 @@
 		A1406FD227C3C3AF00535CA7 /* AlbumsCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCoordinatorMock.swift; sourceTree = "<group>"; };
 		A1406FD527C3C46A00535CA7 /* AlbumsDataServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataServiceMock.swift; sourceTree = "<group>"; };
 		A1406FD727C3C49200535CA7 /* AlbumsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataService.swift; sourceTree = "<group>"; };
+		A16EE2C827C6421C000B674D /* AlbumCollectionViewDatapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewDatapter.swift; sourceTree = "<group>"; };
 		A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewAdapter.swift; sourceTree = "<group>"; };
 		A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		A1E76C4027C6219C000CFA36 /* Constants+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+UI.swift"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				A1E76C4227C62715000CFA36 /* AlbumCellViewModel.swift */,
 				A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */,
+				A16EE2C827C6421C000B674D /* AlbumCollectionViewDatapter.swift */,
 			);
 			path = AlbumCell;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				A1E76C4327C62715000CFA36 /* AlbumCellViewModel.swift in Sources */,
 				A1F3EC4927C4DAB10017E28F /* PhotoAPI.swift in Sources */,
 				A11E8AFD27C4318700855879 /* Photo.swift in Sources */,
+				A16EE2C927C6421C000B674D /* AlbumCollectionViewDatapter.swift in Sources */,
 				A1406FC727C3BA4500535CA7 /* AlbumsViewModel.swift in Sources */,
 				A1F3EC4227C4D35C0017E28F /* APISessionManager.swift in Sources */,
 				A1406FD827C3C49200535CA7 /* AlbumsDataService.swift in Sources */,

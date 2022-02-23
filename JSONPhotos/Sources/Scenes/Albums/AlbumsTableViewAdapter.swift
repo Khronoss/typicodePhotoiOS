@@ -34,7 +34,7 @@ protocol AlbumsTableViewAdapterType {
     func bind(to tableView: UITableView)
 }
 
-class AlbumsTableViewAdapter: NSObject {
+class AlbumsTableViewAdapter {
     typealias DataSourceType = RxTableViewSectionedReloadDataSource<Section>
 
     private static let cellIdentifier = "AlbumCell"
