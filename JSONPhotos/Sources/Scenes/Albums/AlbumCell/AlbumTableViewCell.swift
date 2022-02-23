@@ -50,7 +50,7 @@ class AlbumTableViewCell: UITableViewCell {
         selectionStyle = .none
 
         let collectionView = createCollectionView()
-        encapsulate(collectionView)
+        contentView.encapsulate(collectionView)
 
         self.collectionView = collectionView
 
@@ -78,21 +78,6 @@ class AlbumTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
 
         return layout
-    }
-
-    private func encapsulate(
-        _ view: UIView
-    ) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(view)
-
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: contentView.topAnchor),
-            view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
     }
 
     private func update(
