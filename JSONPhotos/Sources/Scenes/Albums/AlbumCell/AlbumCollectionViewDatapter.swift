@@ -30,7 +30,7 @@ class AlbumCollectionViewDatapter {
         to collectionView: UICollectionView
     ) {
         collectionView.register(
-            UICollectionViewCell.self,
+            PhotoCollectionViewCell.self,
             forCellWithReuseIdentifier: Self.cellIdentifier)
     }
 }
@@ -47,8 +47,8 @@ extension AlbumCollectionViewDatapter: AlbumCollectionViewDatapterType {
             .drive(
                 collectionView.rx.items(
                     cellIdentifier: Self.cellIdentifier,
-                    cellType: UICollectionViewCell.self)) { (_, _, cell) in
-                        cell.backgroundColor = .red
+                    cellType: PhotoCollectionViewCell.self)) { (_, _, cell) in
+                        cell.viewModel = PhotoCellViewModel()
                     }
                     .disposed(by: disposeBag)
     }
