@@ -14,6 +14,7 @@ target 'JSONPhotos' do
   # ReactiveX
   pod 'RxSwift', '~> 6.5.0'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 
   target 'JSONPhotosTests' do
     inherit! :search_paths
