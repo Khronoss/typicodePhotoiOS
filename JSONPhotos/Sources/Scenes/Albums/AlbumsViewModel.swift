@@ -60,7 +60,7 @@ extension AlbumsViewModel: AlbumsViewModelType {
     func didSelect(
         _ photo: Photo
     ) {
-        // Display single photo
-        print("Selected \(photo)")
+        coordinator
+            .showPhoto(photo)
     }
 }

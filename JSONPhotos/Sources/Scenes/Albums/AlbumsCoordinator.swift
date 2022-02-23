@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 protocol AlbumsCoordinatorType {
-
+    func showPhoto(_ photo: Photo)
 }
 
 class AlbumsCoordinator {
     unowned let window: UIWindow
+    weak var controller: UIViewController!
 
     init(
         from window: UIWindow
@@ -28,7 +29,11 @@ class AlbumsCoordinator {
             viewModel: viewModel,
             tableViewAdapter: tableViewAdapter)
 
-        window.rootViewController = controller
+        let navController = UINavigationController(
+            rootViewController: controller)
+
+        window.rootViewController = navController
+        self.controller = controller
     }
 
     func createAlbumsViewModel() -> AlbumsViewModelType {
@@ -42,5 +47,11 @@ class AlbumsCoordinator {
 }
 
 extension AlbumsCoordinator: AlbumsCoordinatorType {
+    func showPhoto(_ photo: Photo) {
+        let coordinator = PhotoCoordinator(
+            sourceController: controller,
+            photo: photo)
 
+        coordinator.start()
+    }
 }
