@@ -42,23 +42,32 @@ protocol PhotoCellViewModelType {
 
 class PhotoCellViewModel {
     let photo: Photo
+    let session: APISessionManagerType
 
     init(
-        photo: Photo
+        photo: Photo,
+        session: APISessionManagerType
     ) {
         self.photo = photo
+        self.session = session
     }
 }
 
 extension PhotoCellViewModel: PhotoCellViewModelType {
     func fetchImage() -> Observable<PhotoCellState> {
-        Observable
+        let fetchPublisher = session
+            .getData(from: photo.thumbnail)
+            .map {
+                UIImage(data: $0)
+                    .map(PhotoCellState.loaded)
+                ?? PhotoCellState.failed
+            }
+            .catchAndReturn(.failed)
+
+        return Observable
             .merge(
                 .just(.loading),
-                .just(.failed)
-                    .delay(
-                        .seconds(5),
-                        scheduler: MainScheduler.asyncInstance)
+                fetchPublisher
             )
             .asObservable()
     }

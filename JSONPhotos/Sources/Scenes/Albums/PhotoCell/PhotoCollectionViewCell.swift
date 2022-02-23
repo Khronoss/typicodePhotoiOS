@@ -50,6 +50,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     ) {
         let imagePublisher = Observable
             .just(())
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .flatMap(viewModel.fetchImage)
             .share()
             .asDriver(onErrorJustReturn: .failed)

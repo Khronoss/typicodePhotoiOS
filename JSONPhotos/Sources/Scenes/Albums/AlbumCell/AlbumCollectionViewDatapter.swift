@@ -49,7 +49,8 @@ extension AlbumCollectionViewDatapter: AlbumCollectionViewDatapterType {
                     cellIdentifier: Self.cellIdentifier,
                     cellType: PhotoCollectionViewCell.self)) { (_, item, cell) in
                         cell.viewModel = PhotoCellViewModel(
-                            photo: item)
+                            photo: item,
+                            session: URLSession.shared)
                     }
                     .disposed(by: disposeBag)
     }

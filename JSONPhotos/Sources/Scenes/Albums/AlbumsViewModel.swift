@@ -51,6 +51,7 @@ extension AlbumsViewModel: AlbumsViewModelType {
     func viewLoaded() {
         dataService
             .fetchAlbums()
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
             .map(AlbumsViewState.albums)
             .bind(to: state)
             .disposed(by: disposeBag)
