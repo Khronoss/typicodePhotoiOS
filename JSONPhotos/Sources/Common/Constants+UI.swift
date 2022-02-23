@@ -10,5 +10,7 @@ import UIKit
 enum Constants {
     enum GUI {
         static var photoCellSize: CGFloat { 150 }
+
+        static var collectionsItemSpacing: CGFloat { 10 }
     }
 }

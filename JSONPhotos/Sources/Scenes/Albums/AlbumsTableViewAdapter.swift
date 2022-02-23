@@ -58,7 +58,7 @@ class AlbumsTableViewAdapter: NSObject {
 
     private func createDataSource() -> DataSourceType {
         DataSourceType(
-            configureCell: { _, tableView, indexPath, _ in
+            configureCell: { _, tableView, indexPath, item in
                 guard
                     let cell = tableView
                         .dequeueReusableCell(
@@ -68,6 +68,8 @@ class AlbumsTableViewAdapter: NSObject {
                 else {
                     return UITableViewCell()
                 }
+
+                cell.viewModel = AlbumCellViewModel(photos: item)
 
                 return cell
             },

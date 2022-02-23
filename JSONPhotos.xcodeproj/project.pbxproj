@@ -25,6 +25,7 @@
 		A1E76C3A27C61625000CFA36 /* AlbumsTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */; };
 		A1E76C3F27C61D1A000CFA36 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */; };
 		A1E76C4127C6219C000CFA36 /* Constants+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C4027C6219C000CFA36 /* Constants+UI.swift */; };
+		A1E76C4327C62715000CFA36 /* AlbumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C4227C62715000CFA36 /* AlbumCellViewModel.swift */; };
 		A1F3EC3A27C4CB460017E28F /* AlbumsDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3927C4CB460017E28F /* AlbumsDataServiceTests.swift */; };
 		A1F3EC3D27C4CD330017E28F /* URL+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3C27C4CD330017E28F /* URL+StaticString.swift */; };
 		A1F3EC4027C4D3240017E28F /* APISessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3EC3F27C4D3240017E28F /* APISessionManagerMock.swift */; };
@@ -80,6 +81,7 @@
 		A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewAdapter.swift; sourceTree = "<group>"; };
 		A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		A1E76C4027C6219C000CFA36 /* Constants+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+UI.swift"; sourceTree = "<group>"; };
+		A1E76C4227C62715000CFA36 /* AlbumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellViewModel.swift; sourceTree = "<group>"; };
 		A1F3EC3927C4CB460017E28F /* AlbumsDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDataServiceTests.swift; sourceTree = "<group>"; };
 		A1F3EC3C27C4CD330017E28F /* URL+StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+StaticString.swift"; sourceTree = "<group>"; };
 		A1F3EC3F27C4D3240017E28F /* APISessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISessionManagerMock.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		A1E76C3D27C61CE3000CFA36 /* AlbumCell */ = {
 			isa = PBXGroup;
 			children = (
+				A1E76C4227C62715000CFA36 /* AlbumCellViewModel.swift */,
 				A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */,
 			);
 			path = AlbumCell;
@@ -621,6 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E76C4327C62715000CFA36 /* AlbumCellViewModel.swift in Sources */,
 				A1F3EC4927C4DAB10017E28F /* PhotoAPI.swift in Sources */,
 				A11E8AFD27C4318700855879 /* Photo.swift in Sources */,
 				A1406FC727C3BA4500535CA7 /* AlbumsViewModel.swift in Sources */,
