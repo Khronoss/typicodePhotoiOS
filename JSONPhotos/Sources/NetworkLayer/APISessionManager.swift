@@ -17,7 +17,34 @@ extension URLSession: APISessionManagerType {
     func getData(
         from url: URL
     ) -> Observable<Data> {
-        Reactive(self)
-            .data(request: URLRequest(url: url))
+        let request = URLRequest(url: url)
+
+        return Reactive(self)
+            .response(request: request)
+            .map(CachedURLResponse.init)
+            .do(onNext: { [unowned self] response in
+                self
+                    .configuration
+                    .urlCache?
+                    .storeCachedResponse(
+                        response,
+                        for: request)
+            })
+            .catch({ [unowned self] error in
+                Observable
+                    .just(())
+                    .map {
+                        guard
+                            let cachedResponse = self
+                                .configuration
+                                .urlCache?
+                                .cachedResponse(for: request)
+                        else {
+                            throw error
+                        }
+                        return cachedResponse
+                    }
+            })
+            .map(\.data)
     }
 }
