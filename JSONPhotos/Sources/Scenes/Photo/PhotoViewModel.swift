@@ -46,6 +46,11 @@ extension PhotoViewModel: PhotoViewModelType {
     }
 
     func fetchImage() -> Observable<PhotoState> {
+        let thumbnailPublisher = session
+            .getData(from: photo.thumbnail)
+            .compactMap(UIImage.init(data:))
+            .map(PhotoState.loaded)
+
         let fetchPublisher = session
             .getData(from: photo.url)
             .map {
@@ -58,7 +63,8 @@ extension PhotoViewModel: PhotoViewModelType {
         return Observable
             .merge(
                 .just(.loading),
-                fetchPublisher
+                thumbnailPublisher
+                    .concat(fetchPublisher)
             )
             .asObservable()
     }
