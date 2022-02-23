@@ -6,12 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AlbumsViewController: UIViewController {
-    let viewModel: AlbumsViewModelType
+    @IBOutlet weak var tableView: UITableView!
 
-    init(viewModel: AlbumsViewModelType) {
+    private let disposeBag = DisposeBag()
+
+    let viewModel: AlbumsViewModelType
+    let tableViewAdapter: AlbumsTableViewAdapterType
+
+    init(
+        viewModel: AlbumsViewModelType,
+        tableViewAdapter: AlbumsTableViewAdapterType
+    ) {
         self.viewModel = viewModel
+        self.tableViewAdapter = tableViewAdapter
 
         super.init(
             nibName: "AlbumsViewController",
@@ -26,8 +37,18 @@ class AlbumsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .lightGray
 
         viewModel.viewLoaded()
+        tableViewAdapter.bind(to: tableView)
+
+        setupBindings()
+    }
+
+    private func setupBindings() {
+        viewModel
+            .state
+            .compactMap(\.albums)
+            .bind(to: tableViewAdapter.albums)
+            .disposed(by: disposeBag)
     }
 }

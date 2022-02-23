@@ -23,8 +23,10 @@ class AlbumsCoordinator {
 
     func start() {
         let viewModel = createAlbumsViewModel()
+        let tableViewAdapter = AlbumsTableViewAdapter()
         let controller = AlbumsViewController(
-            viewModel: viewModel)
+            viewModel: viewModel,
+            tableViewAdapter: tableViewAdapter)
 
         window.rootViewController = controller
     }

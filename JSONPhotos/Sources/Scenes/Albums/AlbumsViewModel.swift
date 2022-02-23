@@ -14,6 +14,15 @@ enum AlbumsViewState: Equatable {
     case albums([Album])
 }
 
+extension AlbumsViewState {
+    var albums: [Album]? {
+        if case .albums(let albums) = self {
+            return albums
+        }
+        return nil
+    }
+}
+
 protocol AlbumsViewModelType {
     func viewLoaded()
 
