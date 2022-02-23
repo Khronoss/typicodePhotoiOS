@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Album {
+struct Album: Identifiable {
     let id: Int
     let photos: [Photo]
 
