@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PhotoViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+
+    private let disposeBag = DisposeBag()
+
     let viewModel: PhotoViewModelType
 
     init(
@@ -28,6 +35,20 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = "Photo Details"
+        setupBindings()
+    }
+
+    private func setupBindings() {
+        viewModel
+            .title
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: rx.title)
+            .disposed(by: disposeBag)
+
+        viewModel
+            .description
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }

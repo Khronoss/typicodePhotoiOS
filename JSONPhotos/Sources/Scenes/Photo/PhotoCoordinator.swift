@@ -27,7 +27,8 @@ class PhotoCoordinator {
     func start() {
         let viewModel = PhotoViewModel(
             coordinator: self,
-            photo: photo)
+            photo: photo,
+            session: URLSession.shared)
         let controller = PhotoViewController(
             viewModel: viewModel)
 
