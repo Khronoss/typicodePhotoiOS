@@ -9,9 +9,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+typealias PhotoState = LoadingState<UIImage>
+
 protocol PhotoViewModelType {
     var title: Observable<String> { get }
     var description: Observable<String> { get }
+
+    func fetchImage() -> Observable<PhotoState>
 }
 
 class PhotoViewModel {
@@ -39,5 +43,23 @@ extension PhotoViewModel: PhotoViewModelType {
     var description: Observable<String> {
         Observable
             .just(photo.title)
+    }
+
+    func fetchImage() -> Observable<PhotoState> {
+        let fetchPublisher = session
+            .getData(from: photo.url)
+            .map {
+                UIImage(data: $0)
+                    .map(PhotoState.loaded)
+                ?? PhotoState.failed
+            }
+            .catchAndReturn(.failed)
+
+        return Observable
+            .merge(
+                .just(.loading),
+                fetchPublisher
+            )
+            .asObservable()
     }
 }

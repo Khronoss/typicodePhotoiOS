@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="3uk-hk-2Ha" id="ycS-3W-QJq"/>
                 <outlet property="imageView" destination="dYE-um-BVa" id="SEB-wh-Azi"/>
+                <outlet property="loadingView" destination="7gs-ZY-XGW" id="0E5-QQ-iPF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,13 +23,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JYk-jp-OWk">
-                    <rect key="frame" x="87" y="370" width="240" height="156.5"/>
+                    <rect key="frame" x="20" y="120" width="374" height="656.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-um-BVa">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="600" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-um-BVa">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
                         </imageView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7gs-ZY-XGW">
+                            <rect key="frame" x="177" y="608" width="20" height="20"/>
+                            <color key="color" systemColor="labelColor"/>
+                        </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uk-hk-2Ha">
-                            <rect key="frame" x="99.5" y="136" width="41.5" height="20.5"/>
+                            <rect key="frame" x="166.5" y="636" width="41.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -42,11 +47,15 @@
                 <constraint firstItem="JYk-jp-OWk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MxE-Pb-Kds"/>
                 <constraint firstItem="JYk-jp-OWk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ejf-hV-GRH"/>
                 <constraint firstItem="JYk-jp-OWk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hih-Ye-bTP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JYk-jp-OWk" secondAttribute="bottom" constant="10" id="uaN-2J-juO"/>
             </constraints>
             <point key="canvasLocation" x="139" y="120"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

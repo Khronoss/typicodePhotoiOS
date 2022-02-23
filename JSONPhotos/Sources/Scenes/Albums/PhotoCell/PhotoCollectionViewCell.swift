@@ -68,7 +68,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             .disposed(by: disposeBag)
 
         imagePublisher
-            .compactMap(\.image)
+            .compactMap(\.value)
             .drive(onNext: { [weak self] image in
                 self?.imageView.image = image
                 self?.imageView.isHidden = false
