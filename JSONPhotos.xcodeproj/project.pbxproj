@@ -27,6 +27,8 @@
 		A16EE2CE27C657A3000B674D /* UIView+EncapsulateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16EE2CD27C657A3000B674D /* UIView+EncapsulateView.swift */; };
 		A16EE2D027C658AA000B674D /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16EE2CF27C658AA000B674D /* PhotoCellViewModel.swift */; };
 		A16EE2D227C66C84000B674D /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16EE2D127C66C84000B674D /* PhotoCollectionViewCell.xib */; };
+		A1C1314027C7721400025073 /* AlbumsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1313F27C7721400025073 /* AlbumsSectionHeaderView.swift */; };
+		A1C1314227C7727F00025073 /* AlbumsSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1314127C7727F00025073 /* AlbumsSectionHeaderViewModel.swift */; };
 		A1E76C3A27C61625000CFA36 /* AlbumsTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */; };
 		A1E76C3F27C61D1A000CFA36 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */; };
 		A1E76C4127C6219C000CFA36 /* Constants+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76C4027C6219C000CFA36 /* Constants+UI.swift */; };
@@ -93,6 +95,8 @@
 		A16EE2CD27C657A3000B674D /* UIView+EncapsulateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EncapsulateView.swift"; sourceTree = "<group>"; };
 		A16EE2CF27C658AA000B674D /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
 		A16EE2D127C66C84000B674D /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		A1C1313F27C7721400025073 /* AlbumsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsSectionHeaderView.swift; sourceTree = "<group>"; };
+		A1C1314127C7727F00025073 /* AlbumsSectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsSectionHeaderViewModel.swift; sourceTree = "<group>"; };
 		A1E76C3927C61625000CFA36 /* AlbumsTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewAdapter.swift; sourceTree = "<group>"; };
 		A1E76C3E27C61D1A000CFA36 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		A1E76C4027C6219C000CFA36 /* Constants+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+UI.swift"; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		A1406FC127C3B95D00535CA7 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				A1C1313E27C7713100025073 /* SectionHeader */,
 				A16EE2CA27C6575E000B674D /* PhotoCell */,
 				A1E76C3D27C61CE3000CFA36 /* AlbumCell */,
 				A1406FC827C3BC1900535CA7 /* AlbumsCoordinator.swift */,
@@ -254,6 +259,15 @@
 				A16EE2D127C66C84000B674D /* PhotoCollectionViewCell.xib */,
 			);
 			path = PhotoCell;
+			sourceTree = "<group>";
+		};
+		A1C1313E27C7713100025073 /* SectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				A1C1313F27C7721400025073 /* AlbumsSectionHeaderView.swift */,
+				A1C1314127C7727F00025073 /* AlbumsSectionHeaderViewModel.swift */,
+			);
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 		A1E76C3D27C61CE3000CFA36 /* AlbumCell */ = {
@@ -678,6 +692,8 @@
 				A16EE2C927C6421C000B674D /* AlbumCollectionViewDatapter.swift in Sources */,
 				A1406FC727C3BA4500535CA7 /* AlbumsViewModel.swift in Sources */,
 				A1F3EC4227C4D35C0017E28F /* APISessionManager.swift in Sources */,
+				A1C1314027C7721400025073 /* AlbumsSectionHeaderView.swift in Sources */,
+				A1C1314227C7727F00025073 /* AlbumsSectionHeaderViewModel.swift in Sources */,
 				A1406FD827C3C49200535CA7 /* AlbumsDataService.swift in Sources */,
 				A1F9B80227C2E6EF00F2049D /* AppDelegate.swift in Sources */,
 				A1406FC927C3BC1900535CA7 /* AlbumsCoordinator.swift in Sources */,

@@ -15,16 +15,16 @@ struct Section: SectionModelType {
 
     var items: [Item]
 
-    let albumID: Album.ID
+    let album: Album
 
     init(original: Section, items: [[Photo]]) {
-        self.albumID = original.albumID
+        self.album = original.album
         self.items = items
     }
 
     init(from album: Album) {
-        albumID = album.id
-        items = [album.photos]
+        self.album = album
+        self.items = [album.photos]
     }
 }
 
@@ -32,11 +32,12 @@ protocol AlbumsTableViewAdapterType {
     var albums: BehaviorRelay<[Album]> { get }
 
     var photoSelected: PublishRelay<Photo> { get }
+    var albumSelected: PublishRelay<Album> { get }
 
     func bind(to tableView: UITableView)
 }
 
-class AlbumsTableViewAdapter {
+class AlbumsTableViewAdapter: NSObject {
     typealias DataSourceType = RxTableViewSectionedReloadDataSource<Section>
 
     private static let cellIdentifier = "AlbumCell"
@@ -44,6 +45,7 @@ class AlbumsTableViewAdapter {
     let albums = BehaviorRelay<[Album]>(value: [])
 
     let photoSelected = PublishRelay<Photo>()
+    let albumSelected = PublishRelay<Album>()
 
     private(set) var disposeBag = DisposeBag()
     private lazy var dataSource: DataSourceType = createDataSource()
@@ -83,17 +85,6 @@ class AlbumsTableViewAdapter {
                 cell.viewModel = viewModel
 
                 return cell
-            },
-            titleForHeaderInSection: { dataSource, sectionIndex in
-                let section = dataSource[sectionIndex]
-
-                let albumID = section.albumID
-                let photosCount = section
-                    .items
-                    .map(\.count)
-                    .reduce(0, +)
-
-                return "Album \(albumID) (\(photosCount) photos)"
             })
     }
 }
@@ -115,5 +106,44 @@ extension AlbumsTableViewAdapter: AlbumsTableViewAdapterType {
             .drive(
                 tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+
+        tableView
+            .rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+}
+
+extension AlbumsTableViewAdapter: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        let album = dataSource
+            .sectionModels[section]
+            .album
+        let viewModel = AlbumsSectionHeaderViewModel(album: album)
+        let header = AlbumsSectionHeaderView(viewModel: viewModel)
+
+        viewModel
+            .tap
+            .bind(to: albumSelected)
+            .disposed(by: disposeBag)
+
+        return header
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        40
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForFooterInSection section: Int
+    ) -> CGFloat {
+        0.1
     }
 }
