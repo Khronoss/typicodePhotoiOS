@@ -10,6 +10,7 @@ import UIKit
 
 protocol AlbumsCoordinatorType {
     func showPhoto(_ photo: Photo)
+    func showAlbum(_ album: Album)
 }
 
 class AlbumsCoordinator {
@@ -51,6 +52,14 @@ extension AlbumsCoordinator: AlbumsCoordinatorType {
         let coordinator = PhotoCoordinator(
             sourceController: controller,
             photo: photo)
+
+        coordinator.start()
+    }
+
+    func showAlbum(_ album: Album) {
+        let coordinator = AlbumDetailsCoordinator(
+            sourceController: controller,
+            album: album)
 
         coordinator.start()
     }

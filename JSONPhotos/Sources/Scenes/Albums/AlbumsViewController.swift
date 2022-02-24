@@ -42,6 +42,8 @@ class AlbumsViewController: UIViewController {
         tableViewAdapter.bind(to: tableView)
 
         setupBindings()
+
+        title = "All albums"
     }
 
     private func setupBindings() {
@@ -56,7 +58,16 @@ class AlbumsViewController: UIViewController {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] photo in
                 self?.viewModel
-                    .didSelect(photo)
+                    .didSelect(photo: photo)
+            })
+            .disposed(by: disposeBag)
+
+        tableViewAdapter
+            .albumSelected
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] album in
+                self?.viewModel
+                    .didSelect(album: album)
             })
             .disposed(by: disposeBag)
     }

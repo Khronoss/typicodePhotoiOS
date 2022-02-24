@@ -25,7 +25,8 @@ extension AlbumsViewState {
 
 protocol AlbumsViewModelType {
     func viewLoaded()
-    func didSelect(_ photo: Photo)
+    func didSelect(photo: Photo)
+    func didSelect(album: Album)
 
     var state: BehaviorRelay<AlbumsViewState> { get }
 }
@@ -58,9 +59,16 @@ extension AlbumsViewModel: AlbumsViewModelType {
     }
 
     func didSelect(
-        _ photo: Photo
+        photo: Photo
     ) {
         coordinator
             .showPhoto(photo)
+    }
+
+    func didSelect(
+        album: Album
+    ) {
+        coordinator
+            .showAlbum(album)
     }
 }
