@@ -53,9 +53,24 @@ class AlbumDetailsViewController: UIViewController {
             .bind(to: collectionViewAdapter.photos)
             .disposed(by: disposeBag)
 
+        viewModel
+            .title
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: rx.title)
+            .disposed(by: disposeBag)
+        
         collectionView
             .rx
             .setDelegate(self)
+            .disposed(by: disposeBag)
+
+        collectionView
+            .rx
+            .modelSelected(Photo.self)
+            .bind(onNext: { [weak self] in
+                self?.viewModel
+                    .didSelect(photo: $0)
+            })
             .disposed(by: disposeBag)
     }
 

@@ -14,8 +14,9 @@ protocol AlbumsCoordinatorType {
 }
 
 class AlbumsCoordinator {
-    unowned let window: UIWindow
     weak var controller: UIViewController!
+
+    unowned let window: UIWindow
 
     init(
         from window: UIWindow
