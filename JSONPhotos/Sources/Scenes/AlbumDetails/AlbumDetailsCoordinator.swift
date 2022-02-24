@@ -29,7 +29,8 @@ class AlbumDetailsCoordinator {
             coordinator: self,
             album: album)
         let controller = AlbumDetailsViewController(
-            viewModel: viewModel)
+            viewModel: viewModel,
+            collectionViewAdapter: AlbumCollectionViewDatapter())
 
         sourceController.show(controller, sender: self)
     }

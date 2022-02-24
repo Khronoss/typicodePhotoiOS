@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AlbumDetailsViewController: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    private let disposeBag = DisposeBag()
+
     let viewModel: AlbumDetailsViewModelType
+    let collectionViewAdapter: AlbumCollectionViewDatapterType
 
     init(
-        viewModel: AlbumDetailsViewModelType
+        viewModel: AlbumDetailsViewModelType,
+        collectionViewAdapter: AlbumCollectionViewDatapterType
     ) {
         self.viewModel = viewModel
+        self.collectionViewAdapter = collectionViewAdapter
 
         super.init(
             nibName: "AlbumDetailsViewController",
@@ -29,6 +38,53 @@ class AlbumDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         title = "Album Details"
+
+        collectionView.collectionViewLayout = collectionViewLayout()
+
+        setupBindings()
     }
 
+    private func setupBindings() {
+        collectionViewAdapter.bind(to: collectionView)
+
+        viewModel
+            .photos
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: collectionViewAdapter.photos)
+            .disposed(by: disposeBag)
+
+        collectionView
+            .rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+
+    private func collectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+
+        layout.itemSize = CGSize(
+            width: Constants.GUI.collectionsItemSpacing,
+            height: Constants.GUI.collectionsItemSpacing)
+        layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
+        layout.scrollDirection = .vertical
+
+        return layout
+    }
+}
+
+extension AlbumDetailsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let cellsPerRow = 3
+        let width = collectionView.frame.width
+        let totalSpacing = Constants.GUI.collectionsItemSpacing * CGFloat(cellsPerRow - 1)
+        let itemSize = floor((width - totalSpacing) / CGFloat(cellsPerRow))
+
+        return CGSize(
+            width: itemSize,
+            height: itemSize)
+    }
 }

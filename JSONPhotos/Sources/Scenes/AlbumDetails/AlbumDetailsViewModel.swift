@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol AlbumDetailsViewModelType {
-
+    var photos: Observable<[Photo]> { get }
 }
 
 class AlbumDetailsViewModel {
@@ -25,5 +27,8 @@ class AlbumDetailsViewModel {
 }
 
 extension AlbumDetailsViewModel: AlbumDetailsViewModelType {
-
+    var photos: Observable<[Photo]> {
+        Observable
+            .just(album.photos)
+    }
 }
