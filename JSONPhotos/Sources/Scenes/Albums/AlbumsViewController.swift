@@ -11,6 +11,9 @@ import RxCocoa
 
 class AlbumsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var retryButton: UIButton!
 
     private let disposeBag = DisposeBag()
 
@@ -47,6 +50,11 @@ class AlbumsViewController: UIViewController {
     }
 
     private func setupBindings() {
+        setupBindingsForState()
+        setupTableViewBindings()
+    }
+
+    private func setupBindingsForState() {
         viewModel
             .state
             .compactMap(\.value)
@@ -54,6 +62,32 @@ class AlbumsViewController: UIViewController {
             .bind(to: tableViewAdapter.albums)
             .disposed(by: disposeBag)
 
+        viewModel
+            .state
+            .map(\.hasValue)
+            .map { !$0 }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: tableView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel
+            .state
+            .map(\.isLoading)
+            .map { !$0 }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel
+            .state
+            .map(\.isFailed)
+            .map { !$0 }
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: errorView.rx.isHidden)
+            .disposed(by: disposeBag)
+    }
+
+    private func setupTableViewBindings() {
         tableViewAdapter
             .photoSelected
             .observe(on: MainScheduler.asyncInstance)

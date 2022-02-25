@@ -28,6 +28,10 @@ extension LoadingState {
         return false
     }
 
+    var hasValue: Bool {
+        value != nil
+    }
+
     var value: Element? {
         if case .loaded(let value) = self {
             return value
