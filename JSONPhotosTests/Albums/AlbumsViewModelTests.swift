@@ -28,21 +28,21 @@ class AlbumsViewModelTests: XCTestCase {
     }
 
     func testCallingViewLoadedShouldStartLoadingAlbumsOnce() {
-        let dataService = AlbumsDataServiceMock()
+        let serviceMock = AlbumsDataServiceMock()
         let viewModel = AlbumsViewModel(
             coordinator: AlbumsCoordinatorMock(),
-            dataService: dataService)
+            dataService: serviceMock)
 
         viewModel.viewLoaded.accept(())
 
-        XCTAssertEqual(dataService.loadCallCount, 1)
+        XCTAssertEqual(serviceMock.loadCallCount, 1)
     }
 
     func testOnNoOpItShouldBeInLoadingState() {
-        let dataService = AlbumsDataServiceMock()
+        let serviceMock = AlbumsDataServiceMock()
         let viewModel = AlbumsViewModel(
             coordinator: AlbumsCoordinatorMock(),
-            dataService: dataService)
+            dataService: serviceMock)
 
         let res = scheduler.start {
             viewModel
@@ -50,6 +50,7 @@ class AlbumsViewModelTests: XCTestCase {
                 .asObservable()
         }
 
+        XCTAssertEqual(serviceMock.loadCallCount, 0)
         XCTAssertRecordedElements(
             res.events,
             [
@@ -57,12 +58,13 @@ class AlbumsViewModelTests: XCTestCase {
             ])
     }
 
-    func testReceivingAlbumsShouldSendAlbumsState() {
-        let albums = (0..<10)
-            .map { Album.fixture(id: $0) }
+    func testReceivingManyAlbumsShouldSendManyAlbumsState() {
+        let albums = [
+            Album.fixture(id: 1),
+            Album.fixture(id: 2)
+        ]
 
-        let dataService = AlbumsDataServiceMock(
-            albums: albums)
+        let dataService = AlbumsDataServiceDummy.albums(albums)
         let viewModel = AlbumsViewModel(
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
@@ -85,8 +87,7 @@ class AlbumsViewModelTests: XCTestCase {
     }
 
     func testReceivingErrorShouldSendFailedState() {
-        let dataService = AlbumsDataServiceMock(
-            albums: nil)
+        let dataService = AlbumsDataServiceDummy.failing()
         let viewModel = AlbumsViewModel(
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
