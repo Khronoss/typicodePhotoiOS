@@ -47,6 +47,7 @@ class AlbumsViewController: UIViewController {
 
         tableViewAdapter
             .bind(to: tableView)
+        tableView.contentInsetAdjustmentBehavior = .always
 
         setupBindings()
 

@@ -23,8 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7ab-sS-cHz">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7ab-sS-cHz">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wCr-WU-0Ys" userLabel="LoadingView">
@@ -65,11 +65,11 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7ab-sS-cHz" secondAttribute="trailing" id="KOU-Fv-Wpo"/>
                 <constraint firstItem="wCr-WU-0Ys" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="S6O-L1-Lz4"/>
-                <constraint firstItem="7ab-sS-cHz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="d6h-6t-6FY"/>
+                <constraint firstItem="7ab-sS-cHz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="d6h-6t-6FY"/>
                 <constraint firstItem="ESF-nC-pRK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="i9c-sO-ZMR"/>
                 <constraint firstItem="ESF-nC-pRK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="l81-E2-Krh"/>
                 <constraint firstItem="wCr-WU-0Ys" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nYq-4r-7Q9"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7ab-sS-cHz" secondAttribute="bottom" id="vnM-bV-sWb"/>
+                <constraint firstAttribute="bottom" secondItem="7ab-sS-cHz" secondAttribute="bottom" id="vnM-bV-sWb"/>
                 <constraint firstItem="7ab-sS-cHz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wOg-gO-eqm"/>
             </constraints>
             <point key="canvasLocation" x="139" y="154"/>

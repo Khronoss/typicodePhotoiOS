@@ -41,6 +41,7 @@ class AlbumDetailsViewController: UIViewController {
 
         collectionView.collectionViewLayout = .defaultAlbumPhotosLayout(
             scrollDirection: .vertical)
+        collectionView.contentInsetAdjustmentBehavior = .always
 
         setupBindings()
     }
@@ -82,15 +83,42 @@ extension AlbumDetailsViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let sectionIsets = (collectionViewLayout as? UICollectionViewFlowLayout)?
-            .sectionInset ?? .zero
-        let cellsPerRow = 3
-        let width = collectionView.frame.width - (sectionIsets.left + sectionIsets.right)
+        let width = collectionView.width
+
+        let cellsPerRow = itemsPerRow(
+            forTrait: traitCollection,
+            deviceOrientation: UIDevice.current.orientation,
+            collectionView: collectionView)
+
         let totalSpacing = Constants.GUI.collectionsItemSpacing * CGFloat(cellsPerRow - 1)
         let itemSize = floor((width - totalSpacing) / CGFloat(cellsPerRow))
 
         return CGSize(
             width: itemSize,
             height: itemSize)
+    }
+
+    private func itemsPerRow(
+        forTrait traitCollection: UITraitCollection,
+        deviceOrientation: UIDeviceOrientation,
+        collectionView: UICollectionView
+    ) -> Int {
+        if traitCollection.horizontalSizeClass == .compact &&
+            deviceOrientation.isPortrait {
+            return 3
+        } else {
+            return numberOfItems(
+                forLineWidth: collectionView.width,
+                desiredItemSize: Constants.GUI.photoCellSize,
+                itemsSpacing: Constants.GUI.collectionsItemSpacing)
+        }
+    }
+
+    private func numberOfItems(
+        forLineWidth width: CGFloat,
+        desiredItemSize itemSize: CGFloat,
+        itemsSpacing: CGFloat
+    ) -> Int {
+        Int(width / (itemSize + itemsSpacing))
     }
 }
