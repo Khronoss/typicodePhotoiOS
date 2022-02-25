@@ -13,13 +13,18 @@ import RxTest
 
 class AlbumsViewModelTests: XCTestCase {
     var disposeBag: DisposeBag!
+    var scheduler: TestScheduler!
+    var albumsObserver: TestableObserver<AlbumsViewState>!
 
     override func setUp() {
         disposeBag = DisposeBag()
+        scheduler = TestScheduler(initialClock: 0)
+        albumsObserver = scheduler.createObserver(AlbumsViewState.self)
     }
 
     override func tearDown() {
         disposeBag = nil
+        scheduler = nil
     }
 
     func testCallingViewLoadedShouldStartLoadingAlbumsOnce() {
@@ -28,7 +33,7 @@ class AlbumsViewModelTests: XCTestCase {
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
 
-        viewModel.viewLoaded()
+        viewModel.viewLoaded.accept(())
 
         XCTAssertEqual(dataService.loadCallCount, 1)
     }
@@ -38,8 +43,6 @@ class AlbumsViewModelTests: XCTestCase {
         let viewModel = AlbumsViewModel(
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
-
-        let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
             viewModel
@@ -64,20 +67,17 @@ class AlbumsViewModelTests: XCTestCase {
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
 
-        let scheduler = TestScheduler(initialClock: 0)
-        let result = scheduler.createObserver(AlbumsViewState.self)
-
         viewModel
             .state
-            .bind(to: result)
+            .bind(to: albumsObserver)
             .disposed(by: disposeBag)
 
         scheduler.start()
 
-        viewModel.viewLoaded()
+        viewModel.viewLoaded.accept(())
 
         XCTAssertRecordedElements(
-            result.events,
+            albumsObserver.events,
             [
                 .loading,
                 .loaded(albums)
@@ -91,20 +91,17 @@ class AlbumsViewModelTests: XCTestCase {
             coordinator: AlbumsCoordinatorMock(),
             dataService: dataService)
 
-        let scheduler = TestScheduler(initialClock: 0)
-        let result = scheduler.createObserver(AlbumsViewState.self)
-
         viewModel
             .state
-            .bind(to: result)
+            .bind(to: albumsObserver)
             .disposed(by: disposeBag)
 
         scheduler.start()
 
-        viewModel.viewLoaded()
+        viewModel.viewLoaded.accept(())
 
         XCTAssertRecordedElements(
-            result.events,
+            albumsObserver.events,
             [
                 .loading,
                 .failed

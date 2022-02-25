@@ -12,7 +12,9 @@ import RxRelay
 typealias AlbumsViewState = LoadingState<[Album]>
 
 protocol AlbumsViewModelType {
-    func viewLoaded()
+    var viewLoaded: PublishRelay<Void> { get }
+    var retryTap: PublishRelay<Void> { get }
+
     func didSelect(photo: Photo)
     func didSelect(album: Album)
 
@@ -20,6 +22,9 @@ protocol AlbumsViewModelType {
 }
 
 class AlbumsViewModel {
+    let viewLoaded = PublishRelay<Void>()
+    let retryTap = PublishRelay<Void>()
+
     let state = BehaviorRelay<AlbumsViewState>(value: .loading)
 
     private let disposeBag = DisposeBag()
@@ -33,19 +38,27 @@ class AlbumsViewModel {
     ) {
         self.coordinator = coordinator
         self.dataService = dataService
+
+        setupBindings()
+    }
+
+    private func setupBindings() {
+        Observable
+            .merge(
+                viewLoaded.asObservable(),
+                retryTap.asObservable())
+            .flatMap({ [dataService] _ in
+                dataService
+                    .fetchAlbums()
+                    .map(AlbumsViewState.loaded)
+                    .catchAndReturn(.failed)
+            })
+            .bind(to: state)
+            .disposed(by: disposeBag)
     }
 }
 
 extension AlbumsViewModel: AlbumsViewModelType {
-    func viewLoaded() {
-        dataService
-            .fetchAlbums()
-            .map(AlbumsViewState.loaded)
-            .catchAndReturn(.failed)
-            .bind(to: state)
-            .disposed(by: disposeBag)
-    }
-
     func didSelect(
         photo: Photo
     ) {

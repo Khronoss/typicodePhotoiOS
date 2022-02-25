@@ -41,8 +41,12 @@ class AlbumsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        viewModel.viewLoaded()
-        tableViewAdapter.bind(to: tableView)
+        viewModel
+            .viewLoaded
+            .accept(())
+
+        tableViewAdapter
+            .bind(to: tableView)
 
         setupBindings()
 
@@ -52,6 +56,12 @@ class AlbumsViewController: UIViewController {
     private func setupBindings() {
         setupBindingsForState()
         setupTableViewBindings()
+
+        retryButton
+            .rx
+            .tap
+            .bind(to: viewModel.retryTap)
+            .disposed(by: disposeBag)
     }
 
     private func setupBindingsForState() {
