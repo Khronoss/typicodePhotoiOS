@@ -39,7 +39,8 @@ class AlbumDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         title = "Album Details"
 
-        collectionView.collectionViewLayout = collectionViewLayout()
+        collectionView.collectionViewLayout = .defaultAlbumPhotosLayout(
+            scrollDirection: .vertical)
 
         setupBindings()
     }
@@ -72,21 +73,6 @@ class AlbumDetailsViewController: UIViewController {
                     .didSelect(photo: $0)
             })
             .disposed(by: disposeBag)
-    }
-
-    private func collectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-
-        layout.itemSize = CGSize(
-            width: Constants.GUI.collectionsItemSpacing,
-            height: Constants.GUI.collectionsItemSpacing)
-        layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(
-            vertical: 0,
-            horizontal: Constants.GUI.collectionsHorizontalMargins)
-
-        return layout
     }
 }
 

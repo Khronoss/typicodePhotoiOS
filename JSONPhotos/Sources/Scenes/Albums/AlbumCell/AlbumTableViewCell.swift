@@ -60,27 +60,14 @@ class AlbumTableViewCell: UITableViewCell {
     private func createCollectionView() -> UICollectionView {
         let collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: collectionViewLayout())
+            collectionViewLayout: .defaultAlbumPhotosLayout(
+                scrollDirection: .horizontal
+            ))
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
         return collectionView
-    }
-
-    private func collectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-
-        layout.itemSize = CGSize(
-            width: Constants.GUI.photoCellSize,
-            height: Constants.GUI.photoCellSize)
-        layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(
-            vertical: 0,
-            horizontal: Constants.GUI.collectionsHorizontalMargins)
-
-        return layout
     }
 
     private func update(
