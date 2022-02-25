@@ -76,6 +76,9 @@ class AlbumTableViewCell: UITableViewCell {
             height: Constants.GUI.photoCellSize)
         layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(
+            vertical: 0,
+            horizontal: Constants.GUI.collectionsHorizontalMargins)
 
         return layout
     }

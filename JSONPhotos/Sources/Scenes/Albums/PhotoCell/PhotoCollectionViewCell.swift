@@ -43,6 +43,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 
     private func setupView() {
         contentView.backgroundColor = .gray
+
+        clipsToBounds = true
+        layer.cornerRadius = Constants.GUI.photoCornerRadius
     }
 
     private func update(

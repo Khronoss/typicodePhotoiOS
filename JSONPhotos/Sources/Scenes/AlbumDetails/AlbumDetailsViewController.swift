@@ -58,7 +58,7 @@ class AlbumDetailsViewController: UIViewController {
             .observe(on: MainScheduler.asyncInstance)
             .bind(to: rx.title)
             .disposed(by: disposeBag)
-        
+
         collectionView
             .rx
             .setDelegate(self)
@@ -82,6 +82,9 @@ class AlbumDetailsViewController: UIViewController {
             height: Constants.GUI.collectionsItemSpacing)
         layout.minimumInteritemSpacing = Constants.GUI.collectionsItemSpacing
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(
+            vertical: 0,
+            horizontal: Constants.GUI.collectionsHorizontalMargins)
 
         return layout
     }
@@ -93,8 +96,10 @@ extension AlbumDetailsViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
+        let sectionIsets = (collectionViewLayout as? UICollectionViewFlowLayout)?
+            .sectionInset ?? .zero
         let cellsPerRow = 3
-        let width = collectionView.frame.width
+        let width = collectionView.frame.width - (sectionIsets.left + sectionIsets.right)
         let totalSpacing = Constants.GUI.collectionsItemSpacing * CGFloat(cellsPerRow - 1)
         let itemSize = floor((width - totalSpacing) / CGFloat(cellsPerRow))
 

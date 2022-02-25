@@ -36,7 +36,13 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupView()
         setupBindings()
+    }
+
+    private func setupView() {
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = Constants.GUI.photoCornerRadius
     }
 
     private func setupBindings() {
