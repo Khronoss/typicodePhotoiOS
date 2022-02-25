@@ -11,10 +11,10 @@ import RxSwift
 
 class AlbumsDataServiceMock {
     private(set) var loadCallCount = 0
-    let albumsToFetch: [Album]
+    let albumsToFetch: [Album]?
 
     init(
-        albums: [Album] = []
+        albums: [Album]? = []
     ) {
         self.albumsToFetch = albums
     }
@@ -26,6 +26,14 @@ extension AlbumsDataServiceMock: AlbumsDataServiceType {
 
         return Observable
             .just(albumsToFetch)
+            .map { albums in
+                guard
+                    let albums = albums
+                else {
+                    throw NSError(domain: "test", code: 400, userInfo: nil)
+                }
+                return albums
+            }
             .asObservable()
     }
 }

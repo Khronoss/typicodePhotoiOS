@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum LoadingState<T> {
+enum LoadingState<Element> {
     case loading
-    case loaded(T)
+    case loaded(Element)
     case failed
 }
 
@@ -28,10 +28,29 @@ extension LoadingState {
         return false
     }
 
-    var value: T? {
+    var value: Element? {
         if case .loaded(let value) = self {
             return value
         }
         return nil
+    }
+}
+
+extension LoadingState: Equatable where Element: Equatable {
+    static func == (
+        lhs: LoadingState<Element>,
+        rhs: LoadingState<Element>
+    ) -> Bool {
+        switch (lhs, rhs) {
+            case (.loading, .loading),
+                (.failed, .failed):
+                return true
+
+            case (.loaded(let lVal), .loaded(let rVal)):
+                return lVal == rVal
+
+            default:
+                return false
+        }
     }
 }

@@ -9,19 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-enum AlbumsViewState: Equatable {
-    case loading
-    case albums([Album])
-}
-
-extension AlbumsViewState {
-    var albums: [Album]? {
-        if case .albums(let albums) = self {
-            return albums
-        }
-        return nil
-    }
-}
+typealias AlbumsViewState = LoadingState<[Album]>
 
 protocol AlbumsViewModelType {
     func viewLoaded()
@@ -52,8 +40,8 @@ extension AlbumsViewModel: AlbumsViewModelType {
     func viewLoaded() {
         dataService
             .fetchAlbums()
-            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
-            .map(AlbumsViewState.albums)
+            .map(AlbumsViewState.loaded)
+            .catchAndReturn(.failed)
             .bind(to: state)
             .disposed(by: disposeBag)
     }

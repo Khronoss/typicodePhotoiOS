@@ -27,6 +27,7 @@ extension AlbumsDataService: AlbumsDataServiceType {
         session
             .getData(
                 from: URL(staticString: "http://jsonplaceholder.typicode.com/photos"))
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
             .decode(
                 type: [PhotoAPI].self,
                 decoder: JSONDecoder())

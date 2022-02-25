@@ -80,7 +80,34 @@ class AlbumsViewModelTests: XCTestCase {
             result.events,
             [
                 .loading,
-                .albums(albums)
+                .loaded(albums)
+            ])
+    }
+
+    func testReceivingErrorShouldSendFailedState() {
+        let dataService = AlbumsDataServiceMock(
+            albums: nil)
+        let viewModel = AlbumsViewModel(
+            coordinator: AlbumsCoordinatorMock(),
+            dataService: dataService)
+
+        let scheduler = TestScheduler(initialClock: 0)
+        let result = scheduler.createObserver(AlbumsViewState.self)
+
+        viewModel
+            .state
+            .bind(to: result)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        viewModel.viewLoaded()
+
+        XCTAssertRecordedElements(
+            result.events,
+            [
+                .loading,
+                .failed
             ])
     }
 }

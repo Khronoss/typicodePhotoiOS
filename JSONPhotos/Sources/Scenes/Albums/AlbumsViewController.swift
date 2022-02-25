@@ -49,7 +49,8 @@ class AlbumsViewController: UIViewController {
     private func setupBindings() {
         viewModel
             .state
-            .compactMap(\.albums)
+            .compactMap(\.value)
+            .observe(on: MainScheduler.asyncInstance)
             .bind(to: tableViewAdapter.albums)
             .disposed(by: disposeBag)
 

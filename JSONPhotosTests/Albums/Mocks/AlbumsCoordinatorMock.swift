@@ -9,5 +9,7 @@ import Foundation
 @testable import JSONPhotos
 
 class AlbumsCoordinatorMock: AlbumsCoordinatorType {
+    func showPhoto(_ photo: Photo) {}
 
+    func showAlbum(_ album: Album) {}
 }
