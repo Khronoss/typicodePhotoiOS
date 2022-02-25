@@ -32,7 +32,7 @@ class AlbumDetailsViewModel {
 extension AlbumDetailsViewModel: AlbumDetailsViewModelType {
     var title: Observable<String> {
         Observable
-            .just("Album #(\(album.id)")
+            .just("Album #(\(album.id))")
     }
 
     var photos: Observable<[Photo]> {
